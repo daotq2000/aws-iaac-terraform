@@ -38,6 +38,8 @@ A written architecture design document.
 AWS CloudFormation template files.
 A cost analysis report.
 Instructions for scaling, backup, and disaster recovery
-** Resolved
+
+**Resolved**
+
 1. Infastructure Design
 ![Infastructure Design](/Infastructure-Design.png)
