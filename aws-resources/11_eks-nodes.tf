@@ -4,12 +4,12 @@ resource "aws_eks_node_group" "private-nodes" {
   node_role_arn   = aws_iam_role.nodes.arn
 
   subnet_ids = [
-    aws_subnet.private-subnet-1a,
-    aws_subnet.private-subnet-1b,
-    aws_subnet.private-subnet-1c,
+    aws_subnet.private-subnet-1a.id,
+    aws_subnet.private-subnet-1b.id,
+    aws_subnet.private-subnet-1c.id,
   ]
 
-  capacity_type  = "Spot"
+  capacity_type  = "SPOT"
   instance_types = ["t3.small"]
 
   scaling_config {
@@ -23,7 +23,7 @@ resource "aws_eks_node_group" "private-nodes" {
   }
 
   labels = {
-    role = "general"
+    role = "Eks-cluster"
   }
 
   depends_on = [
