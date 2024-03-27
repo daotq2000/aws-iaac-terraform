@@ -4,6 +4,18 @@ terraform {
       source = "hashicorp/aws"
       version = "4.15.0"
     }
+    kubernetes = {
+      source = "hashicorp/kubernetes"
+      version = ">= 2.3.2"
+    }
+    kubectl = {
+      source  = "gavinbunney/kubectl"
+      version = ">= 1.11.2"
+    }
+    helm = {
+      source = "hashicorp/helm"
+      version = ">= 2.2.0"
+    }
   }
 }
 provider "aws" {

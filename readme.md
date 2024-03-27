@@ -42,4 +42,4 @@ Instructions for scaling, backup, and disaster recovery
 **Resolved**
 
 1. Infastructure Design
-![Infastructure Design](/Infastructure-Design.png)
+![Infastructure Design](Infastructure-Design.png)
