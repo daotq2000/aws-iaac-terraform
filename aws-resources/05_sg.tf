@@ -33,3 +33,8 @@ resource "aws_security_group" "redis_sg" {
   name   = "redis_sg"
   vpc_id = aws_vpc.vpc-main.id
 }
+#Create SG for Application Load Banlancer
+resource "aws_security_group" "alb_sg" {
+  name   = "application_loadbalancer_sg"
+  vpc_id = aws_vpc.vpc-main.id
+}
