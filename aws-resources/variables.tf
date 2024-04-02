@@ -8,7 +8,7 @@ variable "ssh_access_key" {
 }
 variable "aws_role_code_pipeline" {
   type = string
-  default = "aws-code-pipeline"
+  default = "arn:aws:iam::846338211683:role/service-role/aws-code-pipeline"
 }
 variable "registry_credential" {
   type = string
