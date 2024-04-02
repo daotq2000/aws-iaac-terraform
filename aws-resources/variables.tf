@@ -18,7 +18,10 @@ variable "registry_credential_provider" {
   type = string
   default = "registry_credential_provider"
 }
-variable "github_repsitory" {
-  type = string
-  default = "https://github.com/daotq2000/aws-iaac-terraform"
+variable "repository" {
+  type = map
+  default = {
+    source: "GITHUB",
+    url:"https://github.com/daotq2000/aws-iaac-terraform"
+  }
 }

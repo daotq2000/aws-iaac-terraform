@@ -25,8 +25,8 @@ resource "aws_codebuild_project" "example" {
   }
 
   source {
-    type      = "GITHUB"  # Replace with your source repository type
-    location  = "https://github.com/user/repo.git"  # Replace with your repository URL
+    type      = var.repository.source
+    location  = var.repository.url
   }
 
 }
