@@ -1,6 +1,6 @@
 
 resource "aws_lb" "network_lb" {
-  name               = "my-nlb"
+  name               = "network-lb"
   load_balancer_type = "network"
   subnets            = [aws_subnet.private-subnet-1a.id, aws_subnet.private-subnet-1b.id, aws_subnet.private-subnet-1c.id]
   internal = true

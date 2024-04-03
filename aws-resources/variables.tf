@@ -22,6 +22,10 @@ variable "repository" {
   type = map
   default = {
     source: "GITHUB",
-    url:"https://github.com/daotq2000/aws-iaac-terraform"
+    url:"https://github.com/daotq2000/aws-spring-sqs-queue.git"
   }
+}
+variable "region" {
+  type = string
+  default = "us-east1"
 }

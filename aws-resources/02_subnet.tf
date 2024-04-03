@@ -28,11 +28,11 @@ resource "aws_subnet" "private-subnet-1c" {
 }
 #Create subnets group for rds cluster
 resource "aws_db_subnet_group" "subnet_group" {
-  name       = "rds_subnet_group"
+  name       = "rds-subnet-group"
   subnet_ids = [aws_subnet.private-subnet-1a.id,aws_subnet.private-subnet-1b.id,aws_subnet.private-subnet-1c.id]
 }
 # Create subnets group for elastic cache
 resource "aws_elasticache_subnet_group" "redis_subnet_group" {
-  name       = "redis_subnet_group"
+  name       = "redis-subnet-group"
   subnet_ids = [aws_subnet.private-subnet-1a.id,aws_subnet.private-subnet-1b.id,aws_subnet.private-subnet-1c.id]
 }

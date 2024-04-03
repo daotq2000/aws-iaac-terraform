@@ -6,7 +6,7 @@ resource "aws_codebuild_project" "aws-iaac-project" {
 
   artifacts {
     type = "S3"
-    artifact_identifier = aws_s3_bucket.bucket_data.bucket
+    artifact_identifier = aws_s3_bucket.eks-project-bucket-data.bucket
   }
 
   environment {
@@ -17,10 +17,6 @@ resource "aws_codebuild_project" "aws-iaac-project" {
     registry_credential {
       credential_provider = "SECRETS_MANAGER"
       credential          = var.registry_credential
-    }
-    environment_variable {
-      name  = ""
-      value = ""
     }
   }
 

@@ -10,7 +10,8 @@ resource "aws_rds_cluster" "postgres-cluster" {
   vpc_security_group_ids  = [aws_security_group.rds_cluster_sg.id]
   db_subnet_group_name    = aws_db_subnet_group.subnet_group.name
   engine                  = "postgres"
-  engine_version          = "11.17"
+  engine_version          = "15.5"
+  source_region = var.region
   depends_on = [
     aws_db_subnet_group.subnet_group,
     aws_security_group.rds_cluster_sg
@@ -23,7 +24,7 @@ resource "aws_rds_cluster_instance" "cluster_instances" {
   cluster_identifier = "${aws_rds_cluster.postgres-cluster.id}"
   instance_class     = "db.t2.micro"
   engine             = "postgres"
-  engine_version     = "11.18"
+  engine_version     = "15.5"
   publicly_accessible= false
   depends_on = [
     aws_rds_cluster.postgres-cluster

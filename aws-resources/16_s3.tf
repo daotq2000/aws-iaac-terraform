@@ -1,7 +1,7 @@
 
-resource "aws_s3_bucket" "bucket_front_end_source" {
-  bucket = "bucket_front_end_source"
+resource "aws_s3_bucket" "eks-project-front-end-source" {
+  bucket = "eks-project-front-end-source"
 }
-resource "aws_s3_bucket" "bucket_data" {
-  bucket = "bucket_data"
+resource "aws_s3_bucket" "eks-project-bucket-data" {
+  bucket = "eks-project-bucket-data"
 }
