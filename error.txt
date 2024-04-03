@@ -1,0 +1,44 @@
+│ Error: creating EC2 Instance: InvalidGroup.NotFound: The security group 'vpc-01ff440b8bb301d19' does not exist in VPC 'vpc-01ff440b8bb301d19'
+│       status code: 400, request id: 8e42ede3-f457-4400-8cf0-11cf1c1310a8
+│
+│   with module.aws-resources.aws_instance.bastion_host,
+│   on aws-resources/06_bastionHost.tf line 1, in resource "aws_instance" "bastion_host":
+│    1: resource "aws_instance" "bastion_host" {
+│
+╵
+╷
+│ Error: error waiting for EKS Node Group (Eks-cluster:private-nodes) to create: unexpected state 'CREATE_FAILED', wanted target 'ACTIVE'. last error: 1 error occurred:
+│       * subnet-07c3ef7a2708f6090, subnet-07238694763496ad5, subnet-01ce475141cb6da76: Ec2SubnetInvalidConfiguration: One or more Amazon EC2 Subnets of [subnet-07c3ef7a2708f6090, subnet-07238694763496ad5, subnet-01ce475141cb6da76] for node group private-nodes does not automatically assign public IP addresses to instances launched into it. If you want your instances to be assigned a public IP address, then you need to enable auto-assign public IP address for the subnet. See IP addressing in VPC guide: https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html#subnet-public-ip
+│
+│
+│
+│   with module.aws-resources.aws_eks_node_group.private-nodes,
+│   on aws-resources/11_eks-nodes.tf line 1, in resource "aws_eks_node_group" "private-nodes":
+│    1: resource "aws_eks_node_group" "private-nodes" {
+│
+╵
+╷
+│ Error: error creating RDS cluster: InvalidParameterValue: AllocatedStorage is required.
+│       status code: 400, request id: c5ad17e7-449e-4587-915b-2bb8305075e4
+│
+│   with module.aws-resources.aws_rds_cluster.postgres-cluster,
+│   on aws-resources/13_database.tf line 1, in resource "aws_rds_cluster" "postgres-cluster":
+│    1: resource "aws_rds_cluster" "postgres-cluster" {
+│
+╵
+╷
+│ Error: error creating CloudFront Distribution: InvalidWebACLId: Invalid webACL identifier provided arn:aws:wafv2:us-east-1:846338211683:regional/webacl/wafv2-web-acl/c0f12dbe-1a5b-438b-afb0-dd98f776b909,arn:aws:elasticloadbalancing:us-east-1:846338211683:loadbalancer/app/application-loadbalancer/9b38741a3fddbbb3
+│       status code: 400, request id: 8cbdf9dd-656a-42ab-84ef-11109f505cee
+│
+│   with module.aws-resources.aws_cloudfront_distribution.cloudfront_s3_distribution,
+│   on aws-resources/18_cloudfront.tf line 4, in resource "aws_cloudfront_distribution" "cloudfront_s3_distribution":
+│    4: resource "aws_cloudfront_distribution" "cloudfront_s3_distribution" {
+│
+╵
+╷
+│ Error: Error creating CodeBuild project: InvalidInputException: Invalid artifacts: location is required
+│
+│   with module.aws-resources.aws_codebuild_project.aws-iaac-project,
+│   on aws-resources/20_code-build.tf line 1, in resource "aws_codebuild_project" "aws-iaac-project":
+│    1: resource "aws_codebuild_project" "aws-iaac-project" {
+│
