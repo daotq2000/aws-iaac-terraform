@@ -12,6 +12,9 @@ resource "aws_rds_cluster" "postgres-cluster" {
   engine                  = "postgres"
   engine_version          = "15.5"
   source_region = var.region
+  storage_type = "gp2"
+  db_cluster_instance_class = "db.t3.micro"
+  allocated_storage = 5
   depends_on = [
     aws_db_subnet_group.subnet_group,
     aws_security_group.rds_cluster_sg

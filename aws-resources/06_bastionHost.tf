@@ -4,7 +4,6 @@ resource "aws_instance" "bastion_host" {
   subnet_id     = aws_subnet.public-subnet-1a.id
   key_name      = "public-bastion-host" # specify your key pair name
   security_groups = [aws_security_group.bastion_sg.id]
-  vpc_security_group_ids = [aws_vpc.vpc-main.id]
   tags = {
     Name = "Bastion Host"
   }

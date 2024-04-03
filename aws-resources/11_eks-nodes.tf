@@ -2,7 +2,7 @@ resource "aws_eks_node_group" "private-nodes" {
   cluster_name    = aws_eks_cluster.eks_cluster.name
   node_group_name = "private-nodes"
   node_role_arn   = aws_iam_role.nodes.arn
-
+  ami_type = "AL2_x86_64"
   subnet_ids = [
     aws_subnet.private-subnet-1a.id,
     aws_subnet.private-subnet-1b.id,
@@ -10,7 +10,7 @@ resource "aws_eks_node_group" "private-nodes" {
   ]
 
   capacity_type  = "SPOT"
-  instance_types = ["t3.small"]
+  instance_types = ["t5.small"]
 
   scaling_config {
     desired_size = 1

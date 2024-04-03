@@ -47,4 +47,5 @@ resource "aws_cloudfront_distribution" "cloudfront_s3_distribution" {
     cloudfront_default_certificate = true
   }
   web_acl_id = aws_wafv2_web_acl_association.WafWebAclAssociation.id
+  depends_on = [aws_wafv2_web_acl.WafWebAcl]
 }

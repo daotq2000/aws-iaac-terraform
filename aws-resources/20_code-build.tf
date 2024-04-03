@@ -21,8 +21,8 @@ resource "aws_codebuild_project" "aws-iaac-project" {
   }
 
   source {
-    type      = var.repository.source
-    location  = var.repository.url
+    type      = "S3"
+    location  = "${aws_s3_bucket.eks-project-front-end-source.bucket_regional_domain_name}/${aws_s3_bucket.eks-project-front-end-source.bucket}/frontend"
   }
 
 }
