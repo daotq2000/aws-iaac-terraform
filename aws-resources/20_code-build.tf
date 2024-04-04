@@ -22,7 +22,7 @@ resource "aws_codebuild_project" "aws-iaac-project" {
 
   source {
     type      = "S3"
-    location  = "${aws_s3_bucket.eks-project-front-end-source.bucket_regional_domain_name}/${aws_s3_bucket.eks-project-front-end-source.bucket}/frontend"
+    location  = "s3://${aws_s3_bucket.eks-project-front-end-source.bucket_regional_domain_name}/"
   }
 
 }
