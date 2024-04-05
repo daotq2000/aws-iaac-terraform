@@ -2,8 +2,7 @@
 resource "aws_route_table" "rtb-internal" {
   vpc_id = aws_vpc.vpc-main.id
   route {
-    cidr_block = aws_vpc.vpc-main.cidr_block
-    nat_gateway_id = aws_nat_gateway.nat-gw.id
+    cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.gw.id
   }
 }

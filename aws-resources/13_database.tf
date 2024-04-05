@@ -1,7 +1,7 @@
 resource "aws_rds_cluster" "postgres-cluster" {
   cluster_identifier     = "aurora-postgresql"
   engine_mode            = "provisioned"
-  engine_version         = "12.15"
+  engine_version         = "16.1"
   availability_zones     = var.az
   database_name          = "ecommerce"
   master_username        = "postgres"
