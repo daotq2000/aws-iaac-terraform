@@ -46,4 +46,8 @@ resource "aws_cloudfront_distribution" "cloudfront_s3_distribution" {
   viewer_certificate {
     cloudfront_default_certificate = true
   }
+  tags = {
+    name="terraform project"
+    description = "managed by terraform provisioning"
+  }
 }

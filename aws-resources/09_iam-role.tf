@@ -21,6 +21,7 @@ resource "aws_iam_role" "role-eks" {
 resource "aws_iam_role_policy_attachment" "eks_attach" {
   role       = aws_iam_role.role-eks.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+
 }
 # Create Role for EKS Node
 resource "aws_iam_role" "nodes" {
@@ -36,6 +37,7 @@ resource "aws_iam_role" "nodes" {
     }]
     Version = "2012-10-17"
   })
+
 }
 
 #Attach Policies to the Role for EKS Node
@@ -47,6 +49,7 @@ resource "aws_iam_role_policy_attachment" "nodes-AmazonEKSWorkerNodePolicy" {
 resource "aws_iam_role_policy_attachment" "nodes-AmazonEKS_CNI_Policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
   role       = aws_iam_role.nodes.name
+
 }
 
 resource "aws_iam_role_policy_attachment" "nodes-AmazonEC2ContainerRegistryReadOnly" {

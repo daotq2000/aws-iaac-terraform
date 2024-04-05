@@ -5,6 +5,7 @@ resource "aws_instance" "bastion_host" {
   key_name      = "public-bastion-host" # specify your key pair name
   security_groups = [aws_security_group.bastion_sg.id]
   tags = {
-    Name = "Bastion Host"
+    name="terraform project"
+    description = "managed by terraform provisioning"
   }
 }

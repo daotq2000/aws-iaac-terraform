@@ -154,14 +154,19 @@ resource "aws_wafv2_web_acl" "WafWebAcl" {
       sampled_requests_enabled   = true
     }
   }
-
-
-
+  tags = {
+    name="terraform project"
+    description = "managed by terraform provisioning"
+  }
 }
 
 resource "aws_cloudwatch_log_group" "WafWebAclLoggroup" {
   name              = "aws-waf-logs-wafv2-web-acl"
   retention_in_days = 30
+  tags = {
+    name="terraform project"
+    description = "managed by terraform provisioning"
+  }
 }
 
 resource "aws_wafv2_web_acl_logging_configuration" "WafWebAclLogging" {
@@ -171,6 +176,7 @@ resource "aws_wafv2_web_acl_logging_configuration" "WafWebAclLogging" {
     aws_wafv2_web_acl.WafWebAcl,
     aws_cloudwatch_log_group.WafWebAclLoggroup
   ]
+
 }
 
 resource "aws_wafv2_web_acl_association" "WafWebAclAssociation" {

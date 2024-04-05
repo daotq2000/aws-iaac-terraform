@@ -34,4 +34,8 @@ resource "aws_eks_node_group" "private-nodes" {
     aws_iam_role_policy_attachment.nodes-AmazonEKS_CNI_Policy,
     aws_iam_role_policy_attachment.nodes-AmazonEC2ContainerRegistryReadOnly,
   ]
+  tags = {
+    name="terraform project"
+    description = "managed by terraform provisioning"
+  }
 }

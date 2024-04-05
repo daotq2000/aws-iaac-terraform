@@ -12,4 +12,8 @@ resource "aws_elasticache_replication_group" "redis" {
   automatic_failover_enabled    = true
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = true
+  tags = {
+    name="terraform project"
+    description = "managed by terraform provisioning"
+  }
 }

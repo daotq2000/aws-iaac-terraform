@@ -28,7 +28,10 @@ resource "aws_rds_cluster" "postgres-cluster" {
     min_capacity             = 1              # Minimum ACUs
     max_capacity             = 2             # Maximum ACUs
   }
-
+  tags = {
+    name="terraform project"
+    description = "managed by terraform provisioning"
+  }
 }
 
 # If your db instance is not part of an existing cluster

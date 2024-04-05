@@ -7,9 +7,9 @@ resource "aws_lb" "network_lb" {
   enable_cross_zone_load_balancing = true
 
   # Other NLB settings according to your need
-
   tags = {
-    Name = "Network Load Balancer"
+    name="terraform project"
+    description = "managed by terraform provisioning"
   }
 }
 resource "aws_lb_target_group" "target_group" {
@@ -18,7 +18,10 @@ resource "aws_lb_target_group" "target_group" {
   protocol = "TCP"
   vpc_id   = aws_vpc.vpc-main.id
   # Health check settings, etc.
-
+  tags = {
+    name="terraform project"
+    description = "managed by terraform provisioning"
+  }
   # Other settings as per your need
 }
 resource "aws_lb_listener" "listener" {
@@ -29,5 +32,9 @@ resource "aws_lb_listener" "listener" {
   default_action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.target_group.arn
+  }
+  tags = {
+    name="terraform project"
+    description = "managed by terraform provisioning"
   }
 }
