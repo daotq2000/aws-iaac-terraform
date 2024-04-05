@@ -13,7 +13,7 @@ resource "aws_lb" "network_lb" {
   }
 }
 resource "aws_lb_target_group" "target_group" {
-  name     = "my-target-group"
+  name     = "target-group"
   port     = 80 # specify your target port
   protocol = "TCP"
   vpc_id   = aws_vpc.vpc-main.id
