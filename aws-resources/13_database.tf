@@ -5,7 +5,7 @@ resource "aws_rds_cluster" "aurora-postgresql-cluster" {
   engine_version     = "13.7"
   database_name      = "test"
   master_username    = "test"
-  master_password    = "123456aA@"
+  master_password    = "sadalkdakl232"
   vpc_security_group_ids = [aws_security_group.rds_cluster_sg.id] # Replace with your security group IDs
   db_subnet_group_name   = aws_db_subnet_group.subnet_group.name
   storage_encrypted  = true
