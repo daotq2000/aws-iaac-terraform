@@ -19,7 +19,7 @@ resource "aws_eks_node_group" "private-nodes" {
   }
   remote_access {
     ec2_ssh_key = var.ssh_access_key
-    source_security_group_ids = [aws_security_group.bastion_sg.id]
+    source_security_group_ids = [aws_security_group.sg_private_eks_node.id]
   }
   update_config {
     max_unavailable = 1
