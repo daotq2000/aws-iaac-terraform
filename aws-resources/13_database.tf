@@ -5,7 +5,7 @@ resource "aws_rds_cluster" "aurora-postgresql-cluster" {
   engine_version     = "13.7"
   database_name      = "test"
   master_username    = "test"
-  master_password    = "must_be_eight_characters"
+  master_password    = "123456aA@"
   vpc_security_group_ids = [aws_security_group.rds_cluster_sg.id] # Replace with your security group IDs
   db_subnet_group_name   = aws_db_subnet_group.subnet_group.name
   storage_encrypted  = true
@@ -17,8 +17,11 @@ resource "aws_rds_cluster" "aurora-postgresql-cluster" {
 }
 
 resource "aws_rds_cluster_instance" "aurora-postgresql-cluster" {
+  for_each = var.az
+  identifier = "instance-${each.value}"
   cluster_identifier = aws_rds_cluster.aurora-postgresql-cluster.id
   instance_class     = "db.serverless"
   engine             = aws_rds_cluster.aurora-postgresql-cluster.engine
   engine_version     = aws_rds_cluster.aurora-postgresql-cluster.engine_version
+  availability_zone = each.value
 }
