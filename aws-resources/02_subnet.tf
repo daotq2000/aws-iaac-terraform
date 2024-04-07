@@ -1,6 +1,6 @@
 resource "aws_subnet" "public-subnet-1a" {
   vpc_id     = aws_vpc.vpc-main.id
-  cidr_block = "10.0.0.0/18" # example CIDR block
+  cidr_block = "10.0.1.0/24" # example CIDR block
   availability_zone = "us-east-1a"  # use the availability zone in your region
 
   map_public_ip_on_launch = true # for the bastion host to be accessible from the internet
@@ -11,7 +11,8 @@ resource "aws_subnet" "public-subnet-1a" {
 }
 resource "aws_subnet" "private-subnet-1a" {
   vpc_id     = aws_vpc.vpc-main.id
-  cidr_block = "10.0.64.0/18" # example CIDR block
+  cidr_block = "10.0.2.0/24" # example CIDR block
+  map_public_ip_on_launch = false
   availability_zone = "us-east-1a" # use the availability zone in your region
     tags = {
     name="terraform project"
@@ -20,7 +21,8 @@ resource "aws_subnet" "private-subnet-1a" {
 }
 resource "aws_subnet" "private-subnet-1b" {
   vpc_id     = aws_vpc.vpc-main.id
-  cidr_block = "10.0.128.0/18" # example CIDR block
+  cidr_block = "10.0.3.0/24" # example CIDR block
+  map_public_ip_on_launch = false
   availability_zone = "us-east-1b" # use a different availability zone
   tags = {
     name="terraform project"
@@ -29,7 +31,8 @@ resource "aws_subnet" "private-subnet-1b" {
 }
 resource "aws_subnet" "private-subnet-1c" {
   vpc_id     = aws_vpc.vpc-main.id
-  cidr_block = "10.0.192.0/18" # example CIDR block
+  cidr_block = "10.0.4.0/24" # example CIDR block
+  map_public_ip_on_launch = false
   availability_zone = "us-east-1c" # use another different availability zone
   tags = {
     name="terraform project"
