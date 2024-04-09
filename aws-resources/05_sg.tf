@@ -25,6 +25,13 @@ resource "aws_security_group" "bastion_sg" {
     cidr_blocks = [aws_subnet.private-subnet-1a.cidr_block, aws_subnet.private-subnet-1b.cidr_block,
       aws_subnet.private-subnet-1c.cidr_block, aws_subnet.public-subnet-1a.cidr_block]
   }
+  egress {
+    from_port   = 5432
+    to_port     = 5432
+    protocol    = "tcp"
+    cidr_blocks = [aws_subnet.private-subnet-1a.cidr_block, aws_subnet.private-subnet-1b.cidr_block,
+      aws_subnet.private-subnet-1c.cidr_block, aws_subnet.public-subnet-1a.cidr_block]
+  }
 
 
   tags = {
@@ -71,30 +78,8 @@ resource "aws_security_group" "sg_private_eks_node" {
   }
 
 }
-resource "aws_security_group" "nlb_targets_sg" {
-  name        = "nlb_targets_security_group"
-  description = "Allow traffic from NLB"
-  vpc_id      = aws_vpc.vpc-main.id
-  tags = {
-    name        = "terraform project"
-    description = "managed by terraform provisioning"
-  }
-  ingress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = [aws_vpc.vpc-main.cidr_block]
-  }
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  # Add rules according to your specific requirements
-}
 # Create SG for RDS Cluster
-resource "aws_security_group" "rds_cluster_sg" {
+resource "aws_security_group" "postgres_aurora_sg" {
   name   = "security_rds_cluster"
   vpc_id = aws_vpc.vpc-main.id
 

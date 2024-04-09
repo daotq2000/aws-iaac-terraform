@@ -17,4 +17,8 @@ resource "aws_elasticache_replication_group" "redis" {
     name="terraform project"
     description = "managed by terraform provisioning"
   }
+  depends_on = [
+  aws_eks_cluster.eks_cluster,
+    aws_eks_node_group.private-nodes
+  ]
 }
