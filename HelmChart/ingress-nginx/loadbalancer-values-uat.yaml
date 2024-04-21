@@ -1,0 +1,35 @@
+controller:
+  extraArgs:
+    default-ssl-certificate: "ingress-nginx/vinhomes.vn-tls"
+  replicaCount: 1
+  ingressClassByName: true
+  ingressClassResource:
+    name: "loadbalancer"
+    enabled: true
+    default: false
+    controllerValue: "k8s.io/loadbalancer-ingress-nginx"
+  ## Name of the ingress class to route through this controller
+  ##
+  ingressClass: loadbalancer
+  config:
+    #Upload
+    client-body-buffer-size: 32M
+    proxy-body-size: 100G
+    proxy-buffering: "off"
+    proxy-read-timeout: "600"
+    proxy-send-timeout: "600"
+    #Logging
+    log-format-upstream: '$remote_addr - $remote_user [$time_local] "$request" $status $body_bytes_sent "$http_referer" "$http_user_agent" $request_length $request_time [$proxy_upstream_name] [$proxy_alternative_upstream_name] $upstream_addr $upstream_response_length $upstream_response_time $upstream_status $req_id $http_x_device_id|$http_x_device_os|$http_x_device_os_version|$http_x_device_locale|$http_x_app_version|$http_x_app_id'
+    # Accesslog Request IP
+    compute-full-forwarded-for: "true"
+    use-forwarded-headers: "true"
+  service:
+    type: LoadBalancer
+  metrics:
+    enabled: false
+    serviceMonitor:
+      enabled: true
+#tcp:
+#  32069: "external/window-rdp-external:32069"
+#  32070: "external/avnet-poc-external:3393"
+
