@@ -84,8 +84,8 @@ resource "aws_security_group" "postgres_aurora_sg" {
   vpc_id = aws_vpc.vpc-main.id
 
   ingress {
-    from_port   = 6739
-    to_port     = 6739
+    from_port   = 5432
+    to_port     = 5432
     protocol    = "tcp"
     cidr_blocks = [
       aws_vpc.vpc-main.cidr_block, aws_subnet.private-subnet-1a.cidr_block, aws_subnet.private-subnet-1b.cidr_block,

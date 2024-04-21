@@ -1,1 +1,1 @@
-terraform destroy -y
+terraform destroy
