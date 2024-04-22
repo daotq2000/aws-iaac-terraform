@@ -1,12 +1,12 @@
 provider "kubernetes" {
-  config_path    = "configurations/kubeconfig"
-  config_context = "aws-iaac"
+  config_path    = "~/.kube/config"
+  config_context = var.eks-context-name
   insecure = true
 }
 provider "helm" {
   kubernetes {
-    config_path    = "configurations/kubeconfig"
-    config_context = "aws-iaac"
+    config_path    = "~/.kube/config"
+    config_context = var.eks-context-name
     insecure = true
   }
 }

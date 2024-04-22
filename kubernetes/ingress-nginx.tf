@@ -1,9 +1,9 @@
 resource "kubernetes_namespace" "nginx-ingress" {
   metadata {
     annotations = {
-      name:"ingress nginx namespace"
+      name:"ingress-nginx-namespace"
     }
-    name = "nginx ingress namespace"
+    name = "nginx-ingress-namespace"
   }
   lifecycle {
   }
@@ -15,6 +15,6 @@ resource "helm_release" "public-nginx-ingress" {
   version    = "4.3.0"
   namespace  = kubernetes_namespace.nginx-ingress.id
   values = [
-    file("HelmChart/ingress-nginx/public-values.yaml")
+    file("../HelmChart/ingress-nginx/public-values.yaml")
   ]
 }

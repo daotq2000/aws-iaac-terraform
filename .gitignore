@@ -1,1 +1,3 @@
 /.terraform/
+/kubernetes/.terraform/
+/aws-resources/.terraform/
