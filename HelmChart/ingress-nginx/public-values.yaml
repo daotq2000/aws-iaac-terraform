@@ -35,8 +35,8 @@ controller:
     enabled: false
     serviceMonitor:
       enabled: true
-tcp:
-  32069: "external/window-rdp-external:32069"
-  32070: "external/avnet-poc-external:3393"
-  31280: "external/squid-external:31280"
+#tcp:
+#  32069: "external/window-rdp-external:32069"
+#  32070: "external/avnet-poc-external:3393"
+#  31280: "external/squid-external:31280"
 

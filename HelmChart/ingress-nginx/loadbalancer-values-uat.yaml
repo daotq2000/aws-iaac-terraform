@@ -1,6 +1,4 @@
 controller:
-  extraArgs:
-    default-ssl-certificate: "ingress-nginx/vinhomes.vn-tls"
   replicaCount: 1
   ingressClassByName: true
   ingressClassResource:
