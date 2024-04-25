@@ -12,6 +12,12 @@ resource "aws_security_group" "bastion_sg" {
       aws_subnet.private-subnet-1c.cidr_block, aws_subnet.public-subnet-1a.cidr_block
     ]
   }
+  ingress {
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"] # Warning: This allows traffic from any IP which might not be secure.
+  }
   egress {
     from_port   = 0
     to_port     = 0
