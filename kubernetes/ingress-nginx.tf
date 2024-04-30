@@ -8,6 +8,27 @@ resource "kubernetes_namespace" "nginx-ingress" {
   lifecycle {
   }
 }
+resource "kubernetes_namespace" "ciaws" {
+  metadata {
+    annotations = {
+      name:"ciaws"
+    }
+    name = "ciaws"
+  }
+  lifecycle {
+  }
+}
+resource "kubernetes_namespace" "monitoring" {
+  metadata {
+    annotations = {
+      name:"monitoring"
+    }
+    name = "monitoring"
+  }
+  lifecycle {
+  }
+}
+
 resource "helm_release" "public-nginx-ingress" {
   name       = "ingress-public"
   chart      = "ingress-nginx"

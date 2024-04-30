@@ -25,3 +25,13 @@ resource "aws_rds_cluster_instance" "aurora-postgresql-cluster" {
   engine_version     = aws_rds_cluster.aurora-postgresql-cluster.engine_version
   availability_zone = each.value
 }
+
+# resource "aws_rds_cluster_instance" "aurora-postgresql-cluster" {
+# #   for_each = var.az
+#   identifier = "instance-us-east-1a"
+#   cluster_identifier = aws_rds_cluster.aurora-postgresql-cluster.id
+#   instance_class     = "db.serverless"
+#   engine             = aws_rds_cluster.aurora-postgresql-cluster.engine
+#   engine_version     = aws_rds_cluster.aurora-postgresql-cluster.engine_version
+#   availability_zone = "us-east-1a"
+# }
