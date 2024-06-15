@@ -31,12 +31,12 @@ resource "kubernetes_namespace" "monitoring" {
 
 resource "helm_release" "public-nginx-ingress" {
   name       = "ingress-public"
-  chart      = "ingress-nginx"
-  repository = "https://kubernetes.github.io/ingress-nginx"
-  version    = "4.3.0"
+  chart      = "aws-load-balancer-controller"
+  repository = "public.ecr.aws/eks/aws-load-balancer-controller"
+  version    = "v2.7.0"
   namespace  = kubernetes_namespace.nginx-ingress.id
   values = [
-    file("../HelmChart/ingress-nginx/public-values.yaml")
+    file("../HelmChart/ingress-nginx/values.yaml")
   ]
 }
 resource "helm_release" "aws_load_balancer_controller" {
