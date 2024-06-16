@@ -32,7 +32,7 @@ resource "kubernetes_namespace" "monitoring" {
 resource "helm_release" "public-nginx-ingress" {
   name       = "ingress-public"
   chart      = "aws-load-balancer-controller"
-  repository = "public.ecr.aws/eks/aws-load-balancer-controller"
+  repository = "public.ecr.aws/eks/aws-load-balancer-controller:v2.8.1"
   version    = "v2.7.0"
   namespace  = kubernetes_namespace.nginx-ingress.id
   values = [

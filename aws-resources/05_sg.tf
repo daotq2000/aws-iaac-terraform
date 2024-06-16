@@ -38,7 +38,12 @@ resource "aws_security_group" "bastion_sg" {
     cidr_blocks = [aws_subnet.private-subnet-1a.cidr_block, aws_subnet.private-subnet-1b.cidr_block,
       aws_subnet.private-subnet-1c.cidr_block, aws_subnet.public-subnet-1a.cidr_block]
   }
-
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"  # -1 stands for all
+    cidr_blocks = ["10.0.0.0/16"]  # This implies all IP addresses
+  }
 
   tags = {
     name        = "terraform project"
@@ -53,6 +58,18 @@ resource "aws_security_group" "sg_private_eks_node" {
     to_port     = 22
     protocol    = "tcp"
     cidr_blocks = [aws_vpc.vpc-main.cidr_block,aws_subnet.private-subnet-1a.cidr_block,aws_subnet.private-subnet-1b.cidr_block,aws_subnet.private-subnet-1c.cidr_block,]
+  }
+  ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"  # -1 stands for all
+    cidr_blocks = ["10.0.0.0/16"]  # This implies all IP addresses
+  }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"  # -1 stands for all
+    cidr_blocks = ["10.0.0.0/16"]  # This implies all IP addresses
   }
   egress {
     from_port   = 6379
@@ -98,6 +115,12 @@ resource "aws_security_group" "postgres_aurora_sg" {
       aws_subnet.private-subnet-1c.cidr_block, aws_subnet.public-subnet-1a.cidr_block
     ]
   }
+  ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"  # -1 stands for all
+    cidr_blocks = ["10.0.0.0/16"]  # This implies all IP addresses
+  }
   egress {
     from_port   = 0
     to_port     = 0
@@ -126,6 +149,18 @@ resource "aws_security_group" "redis_sg" {
     to_port = 0
     protocol = "-1"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"  # -1 stands for all
+    cidr_blocks = ["10.0.0.0/16"]  # This implies all IP addresses
+  }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"  # -1 stands for all
+    cidr_blocks = ["10.0.0.0/16"]  # This implies all IP addresses
   }
   tags = {
     name        = "terraform project"
@@ -172,5 +207,17 @@ resource "aws_security_group" "alb_sg" {
     protocol    = "tcp"
     cidr_blocks = [aws_subnet.private-subnet-1a.cidr_block, aws_subnet.private-subnet-1b.cidr_block,
       aws_subnet.private-subnet-1c.cidr_block, aws_subnet.public-subnet-1a.cidr_block]
+  }
+  ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"  # -1 stands for all
+    cidr_blocks = ["10.0.0.0/16"]  # This implies all IP addresses
+  }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"  # -1 stands for all
+    cidr_blocks = ["10.0.0.0/16"]  # This implies all IP addresses
   }
 }
