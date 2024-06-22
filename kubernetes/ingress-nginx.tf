@@ -36,7 +36,7 @@ resource "helm_release" "public-nginx-ingress" {
   version    = "4.3.0"
   namespace  = kubernetes_namespace.nginx-ingress.id
   values = [
-    file("../HelmChart/ingress-nginx/public-values.yaml")
+    file("../HelmChart/ingress-nginx/public-values-uat.yaml")
   ]
 }
 # resource "helm_release" "aws_load_balancer_controller" {
